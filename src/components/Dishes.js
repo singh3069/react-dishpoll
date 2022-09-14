@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 function Dishes() {
   const [data, setData] = useState(null);
-  // const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -25,20 +24,21 @@ function Dishes() {
       });
   }, []);
   return (
-    <div>
-      <h1>Dishes</h1>
+    <div className="pt-4">
       {error && (
         <div>
           {`There is a problem fetching the post data because of this - Error ${error}`}
         </div>
       )}
-      <div>
+      <div className="flex flex-row flex-wrap gap-10 justify-center">
         {data &&
           data.map(({ id, dishName, image, description }) => (
-            <div key={id}>
-              <p>{dishName}</p>
-              {/* <img src={image} alt={dishName} /> */}
-              <p>{description}</p>
+            <div key={id} className="flex  flex-col w-60">
+              <p className="text-center uppercase underline tracking-wider text-lg ">
+                {dishName}
+              </p>
+              {/* <img src={image} alt={dishName} className="p-3 " /> */}
+              <p className="pt-1 ">{description}</p>
             </div>
           ))}
       </div>
