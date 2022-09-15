@@ -1,19 +1,20 @@
+import userData from "../user.json";
+import { useState } from "react";
+
 function LoginForm() {
+  console.log(userData);
   return (
-    <div className="bg-slate-300 border-2 border-black rounded-md my-6 mx-auto w-1/4 h-96 justify-center flex items-center flex-col gap-6">
+    <div className="bg-slate-300 border-2 border-black rounded-md my-6 mx-auto w-5/6 lg:w-1/4 h-96 justify-center flex items-center flex-col gap-6">
       <p className="text-4xl tracking-wider">Login</p>
       <form className="flex flex-col w-10/12 gap-4 items-center">
-        <input
-          type={"text"}
-          className="border w-full border-black rounded-sm"
-        />
+        <input type={"text"} className="border w-3/4 border-black rounded-sm" />
         <input
           type={"password"}
-          className="border w-full border-black rounded-sm"
+          className="border w-3/4 border-black rounded-sm"
         />
         <input
           type={"submit"}
-          className="border w-1/2  border-black rounded-sm cursor-pointer"
+          className="border w-1/2  border-black rounded-sm cursor-pointer bg-black text-white p-1"
         />
       </form>
     </div>
