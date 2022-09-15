@@ -1,14 +1,16 @@
 import "./App.css";
 import Dishes from "./components/Dishes";
+import LoginForm from "./components/LoginForm";
 import Navigation from "./components/Navigation";
 import Pollresult from "./components/Pollresult";
 
 function App() {
   return (
     <div className="">
-      <Navigation />
+      <LoginForm />
+      {/* <Navigation />
       <Dishes />
-      <Pollresult />
+      <Pollresult /> */}
     </div>
   );
 }
