@@ -1,11 +1,13 @@
 import userJSON from "../user.json";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function LoginForm() {
+function LoginForm({ setIsAuthenticated }) {
   const [userData, setUserData] = useState({
     username: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const onChangeEventHandler = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -20,6 +22,8 @@ function LoginForm() {
     );
     if (validuser) {
       alert("Login successful");
+      navigate("/dishes");
+      setIsAuthenticated(true);
     } else {
       alert("Wrong password or username");
     }
