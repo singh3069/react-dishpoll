@@ -1,5 +1,9 @@
 function Pollresult() {
-  return <div>Poll Results</div>;
+  return (
+    <div>
+      <p>hello poll</p>
+    </div>
+  );
 }
 
 export default Pollresult;
