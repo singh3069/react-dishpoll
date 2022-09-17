@@ -23,6 +23,11 @@ function Dishes() {
         setData(null);
       });
   }, []);
+
+  const selectDish = (e) => {
+    console.log(e.target);
+  };
+
   return (
     <div className="pt-4">
       {error && (
@@ -32,13 +37,17 @@ function Dishes() {
       )}
       <div className="flex flex-row flex-wrap gap-10 justify-center">
         {data &&
-          data.map(({ id, dishName, image, description }) => (
-            <div key={id} className="flex  flex-col w-60">
+          data.map((item) => (
+            <div
+              key={item.id}
+              className="flex  flex-col w-60"
+              onClick={selectDish}
+            >
               <p className="text-center uppercase underline tracking-wider text-lg ">
-                {dishName}
+                {item.dishName}
               </p>
-              {/* <img src={image} alt={dishName} className="p-3 " /> */}
-              <p className="pt-1 ">{description}</p>
+              {/* <img src={item.image} alt={item.dishName} className="p-3 " /> */}
+              <p className="pt-1 ">{item.description}</p>
             </div>
           ))}
       </div>
