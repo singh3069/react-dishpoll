@@ -8,7 +8,7 @@ import { useState } from "react";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  console.log(isAuthenticated);
+  // console.log(isAuthenticated);
   return (
     <div className="">
       {!isAuthenticated && (
@@ -18,8 +18,8 @@ function App() {
         <>
           <Navigation />
           <Routes>
-            <Route path="/dishes" element={<Dishes />} />
-            <Route path="/pollresult" element={<Pollresult />} />
+            <Route path="/dishes" element={<Dishes />} exact />
+            <Route path="/pollresult" element={<Pollresult />} exact />
           </Routes>
         </>
       )}
