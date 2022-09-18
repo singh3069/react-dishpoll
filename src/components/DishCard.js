@@ -1,10 +1,9 @@
-import React from "react";
+import { useState } from "react";
 
-function DishCard({ item, setSelectedDish, selectedDish, index }) {
+function DishCard({ item, setSelectedDish, selectedDish }) {
   function selectDish() {
-    // adding rank to selected items
-    item["rank"] = index;
-    console.log(item);
+    // const rankArr = [1,2,3]
+    item["rank"] = selectedDish?.length;
     setSelectedDish((prv) => {
       if (prv.includes(item)) {
         return prv.filter((el) => el !== item);
@@ -33,6 +32,12 @@ function DishCard({ item, setSelectedDish, selectedDish, index }) {
             Select
           </button>
         )}
+        {/* {selectedDish.indexOf(rank1) === selectedDish[0] && (
+          <>
+            <button>Change it to 2</button>
+            <button>Change it to 3</button>
+          </>
+        )} */}
         {selectedDish.length >= 3 && (
           <>
             <button>Change it to 1</button>

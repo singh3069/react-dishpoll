@@ -38,7 +38,6 @@ function Dishes({ setSelectedDish, selectedDish }) {
             <DishCard
               key={index}
               item={item}
-              index={index}
               setSelectedDish={setSelectedDish}
               selectedDish={selectedDish}
             />
