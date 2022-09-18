@@ -22,12 +22,22 @@ function DishCard({ item, setSelected, selected }) {
           className="p-3 pointer-events-none"
         />
         <p className="pt-1 pointer-events-none">{item.description}</p>
-        <button
-          onClick={selectDish}
-          disabled={selected.length >= 3 ? true : false}
-        >
-          Select
-        </button>
+        {selected.length < 3 && (
+          <button
+            onClick={selectDish}
+            disabled={selected.length >= 3 ? true : false}
+          >
+            Select
+          </button>
+        )}
+
+        {selected.length >= 3 && (
+          <>
+            <button>Change it to 1</button>
+            <button>Change it to 2</button>
+            <button>Change it to 3</button>
+          </>
+        )}
       </div>
     </div>
   );
