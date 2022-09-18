@@ -2,7 +2,12 @@ import React from "react";
 
 function DishCard({ item, setSelected }) {
   function selectDish() {
-    setSelected((prv) => [...prv, item]);
+    setSelected((prv) => {
+      if (prv.includes(item)) {
+        return prv.filter((el) => el !== item);
+      }
+      return [...prv, item];
+    });
   }
 
   return (
