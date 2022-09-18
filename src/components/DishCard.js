@@ -16,7 +16,11 @@ function DishCard({ item, setSelected }) {
         <p className="text-center uppercase underline tracking-wider text-lg  pointer-events-none">
           {item.dishName}
         </p>
-        {/* <img src={item.image} alt={item.dishName} className="p-3 pointer-events-none" /> */}
+        <img
+          src={item.image}
+          alt={item.dishName}
+          className="p-3 pointer-events-none"
+        />
         <p className="pt-1 pointer-events-none">{item.description}</p>
         <button onClick={selectDish}>Select</button>
       </div>

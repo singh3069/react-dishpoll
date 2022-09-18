@@ -26,18 +26,8 @@ function Dishes() {
       });
   }, []);
 
-  // const selectDish = (e) => {
-  //   const allChild = e.target.children;
-  //   const allChildArr = [...allChild];
-  //   setSelected(allChildArr);
-  // };
-
-  // const abc = selected?.map((i) => {
-  //   return i.innerHTML;
-  // });
-  console.log(selected);
-  // console.log(abc);
-
+  // limited the array length to 3
+  selected.length = Math.min(selected.length, 3);
   return (
     <div className="pt-4">
       {error && (
@@ -49,17 +39,6 @@ function Dishes() {
         {data &&
           data.map((item, index) => (
             <DishCard key={index} item={item} setSelected={setSelected} />
-            // <div
-            //   key={item.id}
-            //   className="flex  flex-col w-60  p-4"
-            //   onClick={selectDish}
-            // >
-            //   <p className="text-center uppercase underline tracking-wider text-lg  pointer-events-none">
-            //     {item.dishName}
-            //   </p>
-            //   {/* <img src={item.image} alt={item.dishName} className="p-3 pointer-events-none" /> */}
-            //   <p className="pt-1 pointer-events-none">{item.description}</p>
-            // </div>
           ))}
       </div>
     </div>
