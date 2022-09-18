@@ -3,7 +3,7 @@ import React from "react";
 function DishCard({ item, setSelectedDish, selectedDish, index }) {
   function selectDish() {
     // adding rank to selected items
-    item["rank"] = index + 1;
+    item["rank"] = index;
     console.log(item);
     setSelectedDish((prv) => {
       if (prv.includes(item)) {
