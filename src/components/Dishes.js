@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import DishCard from "./DishCard";
 
-function Dishes({ setSelected, selected }) {
+function Dishes({ setSelectedDish, selectedDish }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -38,8 +38,9 @@ function Dishes({ setSelected, selected }) {
             <DishCard
               key={index}
               item={item}
-              setSelected={setSelected}
-              selected={selected}
+              index={index}
+              setSelectedDish={setSelectedDish}
+              selectedDish={selectedDish}
             />
           ))}
       </div>

@@ -10,6 +10,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedDish, setSelectedDish] = useState([]);
 
+  console.log(selectedDish);
+
   // limited the array length to 3
   selectedDish.length = Math.min(selectedDish.length, 3);
   return (
@@ -24,7 +26,10 @@ function App() {
             <Route
               path="/dishes"
               element={
-                <Dishes setSelected={setSelectedDish} selected={selectedDish} />
+                <Dishes
+                  setSelectedDish={setSelectedDish}
+                  selectedDish={selectedDish}
+                />
               }
               exact
             />

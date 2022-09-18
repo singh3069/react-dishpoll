@@ -1,8 +1,11 @@
 import React from "react";
 
-function DishCard({ item, setSelected, selected }) {
+function DishCard({ item, setSelectedDish, selectedDish, index }) {
   function selectDish() {
-    setSelected((prv) => {
+    // adding rank to selected items
+    item["rank"] = index + 1;
+    console.log(item);
+    setSelectedDish((prv) => {
       if (prv.includes(item)) {
         return prv.filter((el) => el !== item);
       }
@@ -22,16 +25,15 @@ function DishCard({ item, setSelected, selected }) {
           className="p-3 pointer-events-none"
         />
         <p className="pt-1 pointer-events-none">{item.description}</p>
-        {selected.length < 3 && (
+        {selectedDish.length < 3 && (
           <button
             onClick={selectDish}
-            disabled={selected.length >= 3 ? true : false}
+            disabled={selectedDish.length >= 3 ? true : false}
           >
             Select
           </button>
         )}
-
-        {selected.length >= 3 && (
+        {selectedDish.length >= 3 && (
           <>
             <button>Change it to 1</button>
             <button>Change it to 2</button>
