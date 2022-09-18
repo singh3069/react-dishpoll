@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import DishCard from "./DishCard";
 
-function Dishes() {
+function Dishes({ setSelected, selected }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [selected, setSelected] = useState([]);
 
   useEffect(() => {
     fetch(`https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json`)
@@ -26,8 +25,6 @@ function Dishes() {
       });
   }, []);
 
-  // limited the array length to 3
-  selected.length = Math.min(selected.length, 3);
   return (
     <div className="pt-4">
       {error && (
@@ -38,7 +35,12 @@ function Dishes() {
       <div className="flex flex-row flex-wrap gap-10 justify-center">
         {data &&
           data.map((item, index) => (
-            <DishCard key={index} item={item} setSelected={setSelected} />
+            <DishCard
+              key={index}
+              item={item}
+              setSelected={setSelected}
+              selected={selected}
+            />
           ))}
       </div>
     </div>

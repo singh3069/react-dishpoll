@@ -1,6 +1,6 @@
 import React from "react";
 
-function DishCard({ item, setSelected }) {
+function DishCard({ item, setSelected, selected }) {
   function selectDish() {
     setSelected((prv) => {
       if (prv.includes(item)) {
@@ -22,7 +22,12 @@ function DishCard({ item, setSelected }) {
           className="p-3 pointer-events-none"
         />
         <p className="pt-1 pointer-events-none">{item.description}</p>
-        <button onClick={selectDish}>Select</button>
+        <button
+          onClick={selectDish}
+          disabled={selected.length >= 3 ? true : false}
+        >
+          Select
+        </button>
       </div>
     </div>
   );

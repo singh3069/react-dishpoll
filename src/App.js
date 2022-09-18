@@ -8,7 +8,10 @@ import { useState } from "react";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // console.log(isAuthenticated);
+  const [selectedDish, setSelectedDish] = useState([]);
+
+  // limited the array length to 3
+  selectedDish.length = Math.min(selectedDish.length, 3);
   return (
     <div className="">
       {!isAuthenticated && (
@@ -18,8 +21,18 @@ function App() {
         <>
           <Navigation />
           <Routes>
-            <Route path="/dishes" element={<Dishes />} exact />
-            <Route path="/pollresult" element={<Pollresult />} exact />
+            <Route
+              path="/dishes"
+              element={
+                <Dishes setSelected={setSelectedDish} selected={selectedDish} />
+              }
+              exact
+            />
+            <Route
+              path="/pollresult"
+              element={<Pollresult selected={selectedDish} />}
+              exact
+            />
           </Routes>
         </>
       )}
