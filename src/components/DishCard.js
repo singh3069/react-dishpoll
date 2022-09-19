@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function DishCard({ item, setSelectedDish, selectedDish }) {
   function selectDish() {
     // const rankArr = [1,2,3]
@@ -24,26 +22,34 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
           className="p-3 pointer-events-none"
         />
         <p className="pt-1 pointer-events-none">{item.description}</p>
-        {selectedDish.length < 3 && (
+        {item.rank === 0 && selectedDish.length > 0 ? (
+          <>
+            <button>Rank it to 2</button>
+            <button>Rank it to 3</button>
+          </>
+        ) : item.rank === 1 && selectedDish.length >= 1 ? (
+          <>
+            <button>Rank it to 1</button>
+            <button>Rank it to 3</button>
+          </>
+        ) : item.rank === 2 && selectedDish.length >= 2 ? (
+          <>
+            <button>Rank it to 1</button>
+            <button>Rank it to 2</button>
+          </>
+        ) : !item.rank && selectedDish.length >= 3 ? (
+          <>
+            <button>Rank it to 1</button>
+            <button>Rank it to 2</button>
+            <button>Rank it to 3</button>
+          </>
+        ) : (
           <button
             onClick={selectDish}
             disabled={selectedDish.length >= 3 ? true : false}
           >
             Select
           </button>
-        )}
-        {/* {selectedDish.indexOf(rank1) === selectedDish[0] && (
-          <>
-            <button>Change it to 2</button>
-            <button>Change it to 3</button>
-          </>
-        )} */}
-        {selectedDish.length >= 3 && (
-          <>
-            <button>Change it to 1</button>
-            <button>Change it to 2</button>
-            <button>Change it to 3</button>
-          </>
         )}
       </div>
     </div>

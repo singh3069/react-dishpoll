@@ -10,8 +10,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedDish, setSelectedDish] = useState([]);
 
-  console.log(selectedDish);
-
   // limited the array length to 3
   selectedDish.length = Math.min(selectedDish.length, 3);
   return (
