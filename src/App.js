@@ -37,7 +37,7 @@ function App() {
   }, []);
 
   return (
-    <div className="">
+    <div className="h-full">
       {!isAuthenticated && (
         <LoginForm setIsAuthenticated={setIsAuthenticated} />
       )}
