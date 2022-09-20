@@ -4,14 +4,36 @@ import LoginForm from "./components/LoginForm";
 import Navigation from "./components/Navigation";
 import Pollresult from "./components/Pollresult";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedDish, setSelectedDish] = useState([]);
-
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
   // limited the array length to 3
   selectedDish.length = Math.min(selectedDish.length, 3);
+
+  useEffect(() => {
+    fetch(`https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            `Error: The status is ${response.status}, this in an HTTP error.`
+          );
+        }
+        return response.json();
+      })
+      .then((actualData) => {
+        setData(actualData);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setData(null);
+      });
+  }, []);
+
   return (
     <div className="">
       {!isAuthenticated && (
@@ -27,6 +49,8 @@ function App() {
                 <Dishes
                   setSelectedDish={setSelectedDish}
                   selectedDish={selectedDish}
+                  data={data}
+                  error={error}
                 />
               }
               exact

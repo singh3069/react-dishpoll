@@ -2,7 +2,7 @@ function Pollresult({ selected }) {
   return (
     <div>
       {selected.length <= 0 && <p>You have not selected any dish...!!!</p>}
-      <div>
+      <div className="flex flex-row w-full justify-evenly">
         {selected.length > 0 &&
           selected
             .map((el) => {
