@@ -1,4 +1,6 @@
 function Pollresult({ selected }) {
+  console.log("Pollresult", selected);
+
   return (
     <div>
       {selected.length <= 0 && <p>You have not selected any dish...!!!</p>}

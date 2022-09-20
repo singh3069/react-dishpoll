@@ -14,6 +14,8 @@ function App() {
   // limited the array length to 3
   selectedDish.length = Math.min(selectedDish.length, 3);
 
+  console.log("app.js", selectedDish);
+
   useEffect(() => {
     fetch(`https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json`)
       .then((response) => {

@@ -10,27 +10,55 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
     });
   }
 
-  function getRank(rank) {
+  function changeRank(e) {
+    const newRank = parseInt(e.target.id);
+    // console.log(newRank);
+    if (newRank !== -1) {
+      selectedDish[newRank] = { ...item, rank: newRank };
+    }
+  }
+
+  // console.log("dishcard", selectedDish);
+
+  function changeButtons(rank) {
     return rank === 0 && selectedDish.length > 0 ? (
       <>
-        <button>Rank it to 2</button>
-        <button>Rank it to 3</button>
+        <button id={1} onClick={changeRank}>
+          Rank it to 2
+        </button>
+        <button id={2} onClick={changeRank}>
+          Rank it to 3
+        </button>
       </>
     ) : rank === 1 && selectedDish.length >= 1 ? (
       <>
-        <button>Rank it to 1</button>
-        <button>Rank it to 3</button>
+        <button id={0} onClick={changeRank}>
+          Rank it to 1
+        </button>
+        <button id={2} onClick={changeRank}>
+          Rank it to 3
+        </button>
       </>
     ) : rank === 2 && selectedDish.length >= 2 ? (
       <>
-        <button>Rank it to 1</button>
-        <button>Rank it to 2</button>
+        <button id={0} onClick={changeRank}>
+          Rank it to 1
+        </button>
+        <button id={1} onClick={changeRank}>
+          Rank it to 2
+        </button>
       </>
     ) : !rank && selectedDish.length >= 3 ? (
       <>
-        <button>Rank it to 1</button>
-        <button>Rank it to 2</button>
-        <button>Rank it to 3</button>
+        <button id={0} onClick={changeRank}>
+          Rank it to 1
+        </button>
+        <button id={1} onClick={changeRank}>
+          Rank it to 2
+        </button>
+        <button id={2} onClick={changeRank}>
+          Rank it to 3
+        </button>
       </>
     ) : (
       <button
@@ -54,7 +82,7 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
           className="p-3 pointer-events-none"
         />
         <p className="pt-1 pointer-events-none">{item.description}</p>
-        {getRank(item.rank)}
+        {changeButtons(item.rank)}
       </div>
     </div>
   );
