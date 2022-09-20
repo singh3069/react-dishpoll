@@ -12,13 +12,11 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
 
   function changeRank(e) {
     const newRank = parseInt(e.target.id);
-    // console.log(newRank);
     if (newRank !== -1) {
       selectedDish[newRank] = { ...item, rank: newRank };
     }
+    changeButtons(item.rank);
   }
-
-  // console.log("dishcard", selectedDish);
 
   function changeButtons(rank) {
     return rank === 0 && selectedDish.length > 0 ? (
@@ -69,7 +67,6 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
       </button>
     );
   }
-
   return (
     <div>
       <div key={item.id} className="flex  flex-col w-60  p-4">

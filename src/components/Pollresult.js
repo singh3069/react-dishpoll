@@ -1,12 +1,11 @@
-function Pollresult({ selected }) {
-  console.log("Pollresult", selected);
-
+function Pollresult({ selectedDish }) {
+  // console.log({ selectedDish });
   return (
     <div>
-      {selected.length <= 0 && <p>You have not selected any dish...!!!</p>}
+      {selectedDish.length <= 0 && <p>You have not selected any dish...!!!</p>}
       <div className="flex flex-row w-full justify-evenly">
-        {selected.length > 0 &&
-          selected
+        {selectedDish.length > 0 &&
+          selectedDish
             .map((el) => {
               return (
                 <div key={el.id} className="flex  flex-col w-60  p-4">
