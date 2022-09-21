@@ -13,7 +13,11 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
   function changeRank(e) {
     const newRank = parseInt(e.target.id);
     if (newRank !== -1) {
-      selectedDish[newRank] = { ...item, rank: newRank };
+      setSelectedDish((prv) => {
+        let newArr = [...selectedDish];
+        newArr[newRank] = { ...item, rank: newRank };
+      });
+      // selectedDish[newRank] = { ...item, rank: newRank };
     }
     changeButtons(item.rank);
   }
