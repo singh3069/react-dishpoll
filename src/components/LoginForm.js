@@ -15,13 +15,13 @@ function LoginForm({ setIsAuthenticated }) {
 
   const findAuthorisedUser = (e) => {
     e.preventDefault();
-    const validuser = userJSON.find(
+    const validUser = userJSON.find(
       (user) =>
         user.username === userData.username &&
         user.password === userData.password
     );
-    if (validuser) {
-      alert("Login successful");
+    if (validUser) {
+      // alert("Login successful");
       navigate("/dishes");
       setIsAuthenticated(true);
     } else {

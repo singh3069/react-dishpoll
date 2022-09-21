@@ -8,13 +8,9 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [selectedDish, setSelectedDish] = useState([]);
+  const [selectedDish, setSelectedDish] = useState(null);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  // limited the array length to 3
-  selectedDish.length = Math.min(selectedDish.length, 3);
-
-  // console.log("app.js", selectedDish);
 
   useEffect(() => {
     fetch(`https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json`)

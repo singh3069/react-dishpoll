@@ -1,113 +1,19 @@
+// import Button from "./UI/Button";
+
 function DishCard({ item, setSelectedDish, selectedDish }) {
-  function selectDish() {
-    // const rankArr = [1,2,3]
-    item["rank"] = selectedDish?.length;
-    setSelectedDish((prv) => {
-      if (prv.includes(item)) {
-        return prv.filter((el) => el.id !== item.id);
+  function selectDish(id) {
+    const newRank = parseInt(id);
+    for (const key in selectedDish) {
+      if (selectedDish[key].id === item.id) {
+        delete selectedDish[key];
+        break;
       }
-      return [...prv, item];
+    }
+    setSelectedDish((prv) => {
+      return { ...prv, [newRank]: { ...item, rank: newRank } };
     });
   }
 
-  function changeRank(e) {
-    const newRank = parseInt(e.target.id);
-    if (newRank !== -1) {
-      setSelectedDish((prv) => {
-        let newArr = [...selectedDish];
-        newArr[newRank] = { ...item, rank: newRank };
-      });
-      // selectedDish[newRank] = { ...item, rank: newRank };
-    }
-    changeButtons(item.rank);
-  }
-
-  function changeButtons(rank) {
-    return rank === 0 && selectedDish.length > 0 ? (
-      <>
-        <button
-          id={1}
-          onClick={changeRank}
-          className="p-2 border w-2/5 bg-black text-white"
-        >
-          Rank it to 2
-        </button>
-        <button
-          id={2}
-          onClick={changeRank}
-          className="p-2 border w-2/5 bg-black text-white"
-        >
-          Rank it to 3
-        </button>
-      </>
-    ) : rank === 1 && selectedDish.length >= 1 ? (
-      <>
-        <button
-          id={0}
-          onClick={changeRank}
-          className="p-2 border w-2/5 bg-black text-white"
-        >
-          Rank it to 1
-        </button>
-        <button
-          id={2}
-          onClick={changeRank}
-          className="p-2 border w-2/5 bg-black text-white"
-        >
-          Rank it to 3
-        </button>
-      </>
-    ) : rank === 2 && selectedDish.length >= 2 ? (
-      <>
-        <button
-          id={0}
-          onClick={changeRank}
-          className="p-2 border w-2/5 bg-black text-white"
-        >
-          Rank it to 1
-        </button>
-        <button
-          id={1}
-          onClick={changeRank}
-          className="p-2 border w-2/5 bg-black text-white"
-        >
-          Rank it to 2
-        </button>
-      </>
-    ) : !rank && selectedDish.length >= 3 ? (
-      <>
-        <button
-          id={0}
-          onClick={changeRank}
-          className="p-2 border w-2/5 bg-black text-white"
-        >
-          Rank it to 1
-        </button>
-        <button
-          id={1}
-          onClick={changeRank}
-          className="p-2 border w-2/5 bg-black text-white"
-        >
-          Rank it to 2
-        </button>
-        <button
-          id={2}
-          onClick={changeRank}
-          className="p-2 border w-2/5 bg-black text-white"
-        >
-          Rank it to 3
-        </button>
-      </>
-    ) : (
-      <button
-        onClick={selectDish}
-        disabled={selectedDish.length >= 3 ? true : false}
-        className="p-2 border w-2/5 bg-black text-white"
-      >
-        Select
-      </button>
-    );
-  }
   return (
     <div>
       <div key={item.id} className="flex  flex-row w-[47rem]  p-4">
@@ -122,7 +28,61 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
           </p>
           <p className="py-3  px-14">{item.description}</p>
           <div className="flex flex-col pt-5 items-center gap-2">
-            {changeButtons(item.rank)}
+            {/* <Button
+              id={0}
+              selectDish={selectDish}
+              selectedDish={selectedDish}
+              item={item}
+            />
+            <Button
+              id={1}
+              selectDish={selectDish}
+              selectedDish={selectedDish}
+              item={item}
+            />
+            <Button
+              id={2}
+              selectDish={selectDish}
+              selectedDish={selectedDish}
+              item={item}
+            /> */}
+
+            <button
+              id={0}
+              onClick={selectDish}
+              className="p-2 border w-2/5 bg-black text-white"
+              disabled={
+                selectedDish !== null &&
+                Object.values(selectedDish)[0].id === item.id &&
+                Object.values(selectedDish)[0].rank === 0
+              }
+            >
+              Rank it to 1
+            </button>
+            <button
+              id={1}
+              onClick={selectDish}
+              className="p-2 border w-2/5 bg-black text-white"
+              disabled={
+                selectedDish !== null &&
+                Object.values(selectedDish)[1].id === item.id &&
+                Object.values(selectedDish)[1].rank === 0
+              }
+            >
+              Rank it to 2
+            </button>
+            <button
+              id={2}
+              onClick={selectDish}
+              className="p-2 border w-2/5 bg-black text-white"
+              disabled={
+                selectedDish !== null &&
+                Object.values(selectedDish)[2].id === item.id &&
+                Object.values(selectedDish)[2].rank === 2
+              }
+            >
+              Rank it to 3
+            </button>
           </div>
         </div>
       </div>

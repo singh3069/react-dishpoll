@@ -1,13 +1,15 @@
 function Pollresult({ selectedDish }) {
-  // console.log({ selectedDish });
+  console.log(selectedDish);
+  const pollDish = selectedDish !== null && Object.values(selectedDish);
   return (
     <div>
-      {selectedDish.length <= 0 && (
+      {selectedDish !== null && pollDish.length <= 0 && (
         <p className="text-center">You have not selected any dish...!!!</p>
       )}
       <div className="flex flex-row w-full flex-wrap  justify-center">
-        {selectedDish.length > 0 &&
-          selectedDish
+        {selectedDish !== null &&
+          pollDish.length > 0 &&
+          pollDish
             .map((el) => {
               return (
                 <div key={el.id} className="flex  flex-row w-[47rem]  p-4">
