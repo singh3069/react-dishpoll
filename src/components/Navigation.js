@@ -9,9 +9,7 @@ function Navigation() {
           Dishes
         </p>
       </Link>
-      <p className="underline cursor-pointer text-2xl tracking-wider">
-        Dish Poll
-      </p>
+      <p className=" cursor-pointer text-2xl tracking-wider">Dish Poll</p>
       <Link to="/pollresult">
         <p className="underline cursor-pointer text-2xl tracking-wider">
           Pollresult

@@ -2,7 +2,7 @@ function Pollresult({ selectedDish }) {
   const pollDish = selectedDish !== null && Object.values(selectedDish);
   return (
     <div>
-      {selectedDish !== null && pollDish.length <= 0 && (
+      {selectedDish === null && pollDish <= 0 && (
         <p className="text-center">You have not selected any dish...!!!</p>
       )}
       <div className="flex flex-row w-full flex-wrap  justify-center">
