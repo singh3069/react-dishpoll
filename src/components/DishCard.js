@@ -1,4 +1,5 @@
-import Button from "./UI/Button";
+import Button from "./Reusable/Button";
+
 function DishCard({ item, setSelectedDish, selectedDish }) {
   function selectDish(e) {
     const newRank = parseInt(e.target.id);
