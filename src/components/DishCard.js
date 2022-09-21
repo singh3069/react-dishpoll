@@ -2,16 +2,16 @@ import Button from "./UI/Button";
 function DishCard({ item, setSelectedDish, selectedDish }) {
   function selectDish(e) {
     const newRank = parseInt(e.target.id);
-    for (const key in selectedDish) {
-      if (selectedDish[key].id === item.id) {
-        delete selectedDish[key];
+    const newObj = { ...selectedDish };
+    for (const key in newObj) {
+      if (newObj[key].id === item.id) {
+        delete newObj[key];
         break;
       }
     }
-    // setIsDisable(newRank);
-    setSelectedDish((prv) => {
-      return { ...prv, [newRank]: { ...item, rank: newRank } };
-    });
+    newObj[newRank] = { ...item, rank: newRank };
+    console.log({ newObj });
+    setSelectedDish(newObj);
   }
 
   return (
