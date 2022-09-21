@@ -1,5 +1,4 @@
 function Pollresult({ selectedDish }) {
-  console.log(selectedDish);
   const pollDish = selectedDish !== null && Object.values(selectedDish);
   return (
     <div>

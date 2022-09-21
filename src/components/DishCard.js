@@ -1,5 +1,4 @@
-// import Button from "./UI/Button";
-
+import Button from "./UI/Button";
 function DishCard({ item, setSelectedDish, selectedDish }) {
   function selectDish(e) {
     const newRank = parseInt(e.target.id);
@@ -9,6 +8,7 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
         break;
       }
     }
+    // setIsDisable(newRank);
     setSelectedDish((prv) => {
       return { ...prv, [newRank]: { ...item, rank: newRank } };
     });
@@ -28,7 +28,7 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
           </p>
           <p className="py-3  px-14">{item.description}</p>
           <div className="flex flex-col pt-5 items-center gap-2">
-            {/* <Button
+            <Button
               id={0}
               selectDish={selectDish}
               selectedDish={selectedDish}
@@ -45,47 +45,7 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
               selectDish={selectDish}
               selectedDish={selectedDish}
               item={item}
-            /> */}
-
-            <button
-              id={0}
-              onClick={selectDish}
-              className="p-2 border w-2/5 bg-black text-white"
-              disabled={
-                selectedDish !== null &&
-                selectedDish.length >= 0 &&
-                Object.values(selectedDish)[0].id === item.id &&
-                Object.values(selectedDish)[0].rank === 0
-              }
-            >
-              Rank it to 1
-            </button>
-            <button
-              id={1}
-              onClick={selectDish}
-              className="p-2 border w-2/5 bg-black text-white"
-              disabled={
-                selectedDish !== null &&
-                selectedDish.length >= 1 &&
-                Object.values(selectedDish)[1].id === item.id &&
-                Object.values(selectedDish)[1].rank === 1
-              }
-            >
-              Rank it to 2
-            </button>
-            <button
-              id={2}
-              onClick={selectDish}
-              className="p-2 border w-2/5 bg-black text-white"
-              disabled={
-                selectedDish !== null &&
-                selectedDish.length >= 2 &&
-                Object.values(selectedDish)[2].id === item.id &&
-                Object.values(selectedDish)[2].rank === 2
-              }
-            >
-              Rank it to 3
-            </button>
+            />
           </div>
         </div>
       </div>
