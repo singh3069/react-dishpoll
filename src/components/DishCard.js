@@ -1,8 +1,8 @@
 // import Button from "./UI/Button";
 
 function DishCard({ item, setSelectedDish, selectedDish }) {
-  function selectDish(id) {
-    const newRank = parseInt(id);
+  function selectDish(e) {
+    const newRank = parseInt(e.target.id);
     for (const key in selectedDish) {
       if (selectedDish[key].id === item.id) {
         delete selectedDish[key];
@@ -53,6 +53,7 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
               className="p-2 border w-2/5 bg-black text-white"
               disabled={
                 selectedDish !== null &&
+                selectedDish.length >= 0 &&
                 Object.values(selectedDish)[0].id === item.id &&
                 Object.values(selectedDish)[0].rank === 0
               }
@@ -65,8 +66,9 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
               className="p-2 border w-2/5 bg-black text-white"
               disabled={
                 selectedDish !== null &&
+                selectedDish.length >= 1 &&
                 Object.values(selectedDish)[1].id === item.id &&
-                Object.values(selectedDish)[1].rank === 0
+                Object.values(selectedDish)[1].rank === 1
               }
             >
               Rank it to 2
@@ -77,6 +79,7 @@ function DishCard({ item, setSelectedDish, selectedDish }) {
               className="p-2 border w-2/5 bg-black text-white"
               disabled={
                 selectedDish !== null &&
+                selectedDish.length >= 2 &&
                 Object.values(selectedDish)[2].id === item.id &&
                 Object.values(selectedDish)[2].rank === 2
               }
